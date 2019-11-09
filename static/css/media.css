@@ -1,0 +1,26 @@
+/*center  swiper-container-huan*/
+
+@media (max-width:1920px) {
+    /* html */
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:1200px) {
+    /* html */
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:750px) {
+    /* html */
+    html {
+        font-size: 12px;
+    }
+    /* 公用 */
+    .content {
+        width: 96%;
+    }
+}
