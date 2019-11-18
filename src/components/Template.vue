@@ -1,20 +1,23 @@
 <template>
-  <div>
-    模板
-  </div>
+  <div>模板</div>
 </template>
 
 <script>
+// 父组通过  :deta="data中的数据"  的方式将数据传递给子组件
+//import myHead from "./head.vue"
 export default {
-  name: "home",
+  // components: {
+  //   header
+  // },
   data() {
-    return {
-    };
+    return {};
   },
   props: {
-    //接收父组件传递过来的参数
-    map: {
-      //type:String
+    //接收父组件传递过来的参数方法
+    deta: {
+      default: function() {
+        return "";
+      }
     }
   },
   methods: {

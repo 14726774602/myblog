@@ -23,12 +23,17 @@ img {
 .container {
     overflow: hidden;
     width: 100%;
-    background-color: #010508;
-    color: #fff;
+    color: #bfbfbf;
 }
 
 .content {
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+@media (max-width:750px) {
+    .content {
+        width: 98%;
+    }
 }
