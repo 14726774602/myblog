@@ -16,7 +16,7 @@
       <img :src="deta.next_url" alt />
     </div>
 
-    <!-- 如果需要滚动条 -->      
+    <!-- 如果需要滚动条 -->
     <!-- <div class="swiper-scrollbar"></div> -->
   </div>
 </template>
@@ -62,7 +62,7 @@ export default {
       //同时显示的slides数量
       slidesPerView: 1,
       // 设置激活的slide居中
-      centeredSlides : true,
+      centeredSlides: true,
       //定义slides的数量多少为一组。
       slidesPerGroup: 1,
       //设置sides之间的距离，单位px
@@ -110,26 +110,45 @@ export default {
 }
 .swiper-slide img {
   width: 100%;
-  margin:0 auto;
+  margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, .3);
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
 }
 .prev,
 .next {
   position: absolute;
   top: 50%;
-  margin-top:-25px;
+  margin-top: -25px;
   z-index: 100;
+  display: none;
 }
-.prev{
-    left:0;
+.swiper-container:hover .prev,
+.swiper-container:hover .next{
+  display: block;
 }
-.next{
-    right:0;
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
 }
 .prev img,
 .next img {
   height: 50px;
   width: auto;
+}
+@media (max-width: 750px) {
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    z-index: 100;
+    outline: none;
+  }
+  .prev img,
+  .next img {
+    height: 28px;
+  }
 }
 </style>

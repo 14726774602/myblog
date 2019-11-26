@@ -6,7 +6,7 @@
       </div>
       <div class="index-title">
         <p>竹 轩</p>
-        <p>水墨兰亭立，孤舟江山游</p>
+        <p>水墨兰亭立，孤舟江上游</p>
       </div>
     </div>
     <div class="nav">
@@ -79,7 +79,7 @@ export default {
   font-weight: bold;
   letter-spacing: 5px;
 }
-.nav{
+.nav {
   display: flex;
   align-items: center;
 }
@@ -103,20 +103,22 @@ export default {
 }
 
 @media (max-width: 900px) {
-  
   .nav-content {
     display: block;
     margin: 10px 0;
   }
-  .nav{
-    margin-top:10px;
-    height:40px;
+  .nav {
+    margin-top: 10px;
+    height: 40px;
   }
   .nav a {
     font-size: 15px;
-    height:40px;
+    height: 40px;
     float: left;
-     padding: 0 10px;
+    padding: 0 10px;
+  }
+  .index-img img {
+    width: 80px;
   }
 }
 </style>
