@@ -1,5 +1,7 @@
 <template>
-  <div>{{time}}</div>
+    <div class="prev">
+        <span v-on:click="back">返回</span>
+    </div>
 </template>
 
 <script>
@@ -33,6 +35,9 @@ export default {
   methods: {
     //定义方法的地方
     //监听方法click事件等，执行drawFeatures方法
+     back(){
+        this.$router.go(-1);//返回上一层
+    },
   },
   
   mounted() {
@@ -42,4 +47,13 @@ export default {
 </script>
 
 <style scoped>
+.prev{
+    text-align: left;
+}
+.prev span{
+    cursor: pointer;
+}
+.prev span:hover{
+    color:#fff;
+}
 </style>

@@ -47,7 +47,7 @@ export default {
       nav:[
         {title:'首页',url:'/',img:'/static/images/index.png'},
         {title:'日志',url:'/Log',img:'/static/images/log.png'},
-         {title:'相册',url:'/Photo',img:'/static/images/photo.png'},
+         {title:'博客',url:'/blog',img:'/static/images/blog.png'},
         {title:'留言板',url:'/Message',img:'/static/images/message.png'}    
       ]
     };
