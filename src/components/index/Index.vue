@@ -25,8 +25,8 @@
         <div class="cover">
           <div class="hobby-text" >
             <p>吾爱唯卿</p>
-            <p>从 <span>{{ date | oldDate }}</span></p>
-            <p>至 <span>{{ date | formaDate }}</span></p>
+            <p>相恋 <span>{{ date | oldDate }}</span></p>
+            <p>至今 <span>{{ date | formaDate }}</span></p>
             <p>与卿相恋 <span>{{ date | timeFn1 }}</span> </p>
             <p>与卿别离 <span>{{ date | timeFn2 }}</span> </p>
           </div>
