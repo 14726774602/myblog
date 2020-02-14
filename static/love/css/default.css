@@ -1,7 +1,8 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    background: #ffe;
+    /* background: #e28aa4; */
+    background: #FFC0CB;
     font-size: 12px;
     overflow: auto
 }
@@ -36,7 +37,7 @@
     font-family: "sans-serif";
     width: 505px;
     font-size: 24px;
-    color: #666
+    color: #f906b9
 }
 
 #messages {
@@ -51,8 +52,8 @@
 #loveu {
     padding: 5px;
     font-size: 22px;
-    margin-top: 80px;
-    margin-right: 120px;
+    margin-top: 50px;
+    margin-right: 110px;
     text-align: right;
     display: none
 }
@@ -69,7 +70,7 @@
     height: 400px;
     color: #333;
     font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
-    font-size: 16px
+    font-size: 14px
 }
 
 #code .string {
@@ -90,7 +91,7 @@
 }
 
 #code .comments {
-    color: palevioletred
+    color: #f506c1;
 }
 
 #copyright {
