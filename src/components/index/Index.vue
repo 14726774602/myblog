@@ -21,15 +21,21 @@
         </div>
       </div>
       <div class="bg-img">
-        <img src="/static/images/intro2.png" alt />
+        <img src="/static/images/intro5.png" alt />
         <div class="cover">
           <div class="hobby-text" >
-            <p>额</p>
-            <p>暂时不知道放啥，先这样吧</p>
+            <p>吾爱唯卿</p>
+            <p>从 <span>{{ date | oldDate }}</span></p>
+            <p>至 <span>{{ date | formaDate }}</span></p>
+            <p>与卿相恋 <span>{{ date | timeFn1 }}</span> </p>
+            <p>与卿别离 <span>{{ date | timeFn2 }}</span> </p>
           </div>
           <div class="phone-hobby-text">
-            <p>额</p>
-            <p>暂时不知道放啥，先这样吧</p>
+            <p>吾爱唯卿</p>
+            <p>从 <span>{{ date | oldDate }}</span></p>
+            <p>至 <span>{{ date | formaDate }}</span></p>
+            <p>与卿相恋 <span>{{ date | timeFn1 }}</span> </p>
+            <p>与卿别离 <span>{{ date | timeFn2 }}</span> </p>
           </div>
         </div>
       </div>
@@ -41,9 +47,10 @@
           <div class="intro-text">
             <p>个人信息</p>
             <p>姓 名：竹轩</p>
-            <p>出生日期：1996年09月08日</p>
-            <p>住 址：水墨兰亭</p>
-            <p>院 校：十里长亭</p>
+            <p>生 日：1996年09月08日</p>
+            <p>生 肖：鼠</p>
+            <p>星 座：天秤座</p>
+            <p>寒 舍：水墨兰亭</p>
           </div>
         </div>
       </div>
@@ -52,10 +59,128 @@
 </template>
 
 <script>
+var padaDate = function(value) {
+  return value < 10 ? "0" + value : value;
+};
 export default {
   name: "home",
   data() {
-    return {};
+    return {
+      code: "",
+      report_info: {},
+      date: new Date()
+    };
+  },
+  filters: {
+    //设置一个函数来进行过滤
+    formaDate: function(value) {
+      //创建一个时间日期对象
+      var date = new Date();
+      //console.log(date)
+      var year = date.getFullYear(); //存储年
+      var month = padaDate(date.getMonth() + 1); //存储月份
+      var day = padaDate(date.getDate()); //存储日期
+      var hours = padaDate(date.getHours()); //存储时
+      var minutes = padaDate(date.getMinutes()); //存储分
+      var seconds = padaDate(date.getSeconds()); //存储秒
+      //返回格式化后的日期
+      return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day +
+        " " +
+        hours +
+        ":" +
+        minutes +
+        ":" +
+        seconds 
+      );
+    },
+    oldDate: function(value){
+      var t1="2019/12/28 23:00:00"; //数据
+      var date = new Date(t1);
+      //console.log(date)
+      var year = date.getFullYear(); //存储年
+      var month = padaDate(date.getMonth() + 1); //存储月份
+      var day = padaDate(date.getDate()); //存储日期
+      var hours = padaDate(date.getHours()); //存储时
+      var minutes = padaDate(date.getMinutes()); //存储分
+      var seconds = padaDate(date.getSeconds()); //存储秒
+      //返回格式化后的日期
+      return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day +
+        " " +
+        hours +
+        ":" +
+        minutes +
+        ":" +
+        seconds 
+      );
+    },
+    timeFn1: function(value)  {//di作为一个变量传进来
+      //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+      var t1="2019/12/28 23:00:00"; //数据
+      var dateBegin = new Date(t1);
+      var dateEnd = new Date();//获取当前时间
+      var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
+      var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+      var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+      var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+      //计算相差分钟数
+      var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+      var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+      //计算相差秒数
+      var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+      var seconds=Math.round(leave3/1000)
+      //console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+      //console.log(dateDiff+"时间差的毫秒数",dayDiff+"计算出相差天数",leave1+"计算天数后剩余的毫秒数"
+        //  ,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
+      return (
+        dayDiff +
+        '天 '+
+        hours +
+        '小时 ' +
+        minutes +
+        '分 ' +
+        seconds +
+        '秒'
+      );
+    },
+    timeFn2: function(value)  {//di作为一个变量传进来
+      //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+      var t1="2020/01/20 23:30:00"; //数据
+      var dateBegin = new Date(t1);
+      var dateEnd = new Date();//获取当前时间
+      var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
+      var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+      var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+      var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+      //计算相差分钟数
+      var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+      var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+      //计算相差秒数
+      var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+      var seconds=Math.round(leave3/1000)
+      //console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+      //console.log(dateDiff+"时间差的毫秒数",dayDiff+"计算出相差天数",leave1+"计算天数后剩余的毫秒数"
+          //,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
+      return (
+        dayDiff +
+        '天 '+
+        hours +
+        '小时 ' +
+        minutes +
+        '分 ' +
+        seconds +
+        '秒'
+      );
+    }
   },
   props: {
     //接收父组件传递过来的参数
@@ -179,7 +304,19 @@ export default {
         }
       }
     });
-  }
+    //this.formaDate();
+    //创建定时器更新时间
+    var _this = this;
+    this.timeId = setInterval(function() {
+      _this.date = new Date();
+    }, 1000);
+  },
+  beforeDestroy: function() {
+    //实例销毁前青出于定时器
+    if (this.timeId) {
+      clearInterval(this.timeId);
+    }
+  },
 };
 </script>
 
@@ -261,6 +398,9 @@ img {
   margin-bottom: 5px;
   line-height: 1.5;
 }
+.hobby-text span{
+  font-weight: bold;
+}
 .phone-hobby-text{
   display: none;
 }
@@ -311,6 +451,9 @@ img {
   .phone-hobby-text p:not(:first-child){
     text-indent: 28px;
     line-height: 1.5;
+  }
+  .phone-hobby-text span{
+    font-weight: bold;
   }
 }
 </style>

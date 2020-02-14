@@ -30,13 +30,7 @@ module.exports = {
             '@': resolve('src'),
         }
     },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin('common.js'),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jquery: 'jquery'
-        })
-    ],
+
     module: {
         rules: [{
                 test: /\.vue$/,
@@ -74,6 +68,14 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin('common.js'),
+        new webpack.ProvidePlugin({
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            $: "jquery"
+        })
+    ],
     node: {
         // prevent webpack from injecting useless setImmediate polyfill because Vue
         // source contains it (although only uses it if it's native).

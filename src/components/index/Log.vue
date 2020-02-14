@@ -38,6 +38,17 @@ export default {
       log: {
         log_content: [
           {
+            photo_url: "/static/images/logo.png",
+            title: "竹 轩",
+            text:[
+              '新年快乐！！！',
+              '愿我爱的人，爱我的人，开心每一天，幸福每一天！！！'
+            ],
+            time: "2020年1月1日",
+            praise: "0",
+            comment: "0"
+          },
+          {
             photo_url: "/static/images/xs.png",
             title: "许 嵩",
             text: [

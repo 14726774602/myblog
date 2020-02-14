@@ -6,7 +6,7 @@
       </div>
       <div class="index-title">
         <p>竹 轩</p>
-        <p>水墨兰亭立，孤舟江上游</p>
+        <p>心有了所属，灵魂便有了归宿</p>
       </div>
     </div>
     <div class="nav">
