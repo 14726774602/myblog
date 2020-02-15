@@ -53,9 +53,9 @@ export default new Router({
         component: () =>
             import ('@/components/Template')
     }, {
-        path: '/Login',
-        name: 'Login',
+        path: '/Secret',
+        name: 'Secret',
         component: () =>
-            import ('@/components/Login')
+            import ('@/components/Secret')
     }]
 })

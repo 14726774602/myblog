@@ -13,10 +13,10 @@
           </div>
           <div class="phone-hobby-text">
             <p>爱好</p>
-            <p>羽毛球</p>
-            <p>看书</p>
-            <p>听歌</p>
-            <p>游山玩水</p>
+            <p>羽毛球 很久没碰球拍，技术一退再退，不复当年</p>
+            <p>看书 推荐 白落梅 所书语言深刻、优美且耐人寻味</p>
+            <p>听歌 基本只听纯音乐，无推荐，主要是记不住名字</p>
+            <p>游山玩水 没时间，只能想想</p>
           </div>
         </div>
       </div>
@@ -437,15 +437,26 @@ img {
   }
   .phone-hobby-text{
     display: block;
-    width: 85%;
-    height: 85%;
+    width: 90%;
+    height: 90%;
+    padding-right: 3px;
     text-align: left;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 1px;
-    overflow: hidden;
+     overflow-y: auto;
+  }
+  .phone-hobby-text::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+      -webkit-box-shadow: inset 0 0 2px rgba(252,91,98,0.2);
+    background:#f4aca8;
+  }
+  .phone-hobby-text::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(246,252,91,0.2);
+    border-radius: 2px;
+    background:#db413a;
   }
   .phone-hobby-text p:first-child {
-    font-size: 17px;
+    font-size: 14px;
     line-height: 2;
   }
   .phone-hobby-text p:not(:first-child){

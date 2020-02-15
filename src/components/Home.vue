@@ -27,7 +27,7 @@ export default {
     return {
       header_content:[
        {title:'竹轩',url:'/',img:'/static/images/lu.png'},
-       {title:'我的主页',url:'/',img:'/static/images/index.png'}
+       {title:'我的主页',url:'/Secret',img:'/static/images/index.png'}
       ],
       s1: {
         prev_url: "/static/images/prev.png",
