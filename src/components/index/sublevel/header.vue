@@ -5,6 +5,10 @@
         <img :src="item.img" alt />
         <span>{{item.title}}</span>
       </router-link>
+      <a href="/static/exel/screen.html" target="_blank" >
+        <img src="/static/images/exel.png" alt />
+        <span>exel</span>
+      </a>
       <a href="/static/love/love.html" target="_blank" >
         <img src="/static/images/love.png" alt />
         <span>吾爱</span>
