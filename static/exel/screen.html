@@ -79,7 +79,7 @@
             color: #000;
             border-collapse: collapse;
             width: 100%;
-            margin: 50px 0;
+            margin: 20px 0;
         }
         
         .table-title {
@@ -98,6 +98,7 @@
         
         .export {
             display: none;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -113,14 +114,14 @@
             <!-- 筛选数据 -->
             <div class="screen">
                 <p class="screen-title"></p>
-                <p class="export">
-                    <button onclick="downloadExl(meetData)">导出</button>
-                </p>
                 <p class="screen-content">
                     <textarea class="condition-data"></textarea>
                     <button onclick="gainData()">确定</button>
                 </p>
             </div>
+        </div>
+        <div class="export">
+            <button onclick="downloadExl(meetData)">导出</button>
         </div>
         <table class="table">
 
