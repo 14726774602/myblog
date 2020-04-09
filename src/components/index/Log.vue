@@ -546,7 +546,7 @@ img {
 }
 .log-container {
   background: #2e2e2e;
-  padding: 30px;
+  padding: 1.5rem;
   border-radius: 10px;
 }
 .log-title {

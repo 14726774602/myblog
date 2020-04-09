@@ -47,7 +47,7 @@ export default {
         {title:'首页',url:'/',img:'/static/images/index.png'},
         {title:'日志',url:'/Log',img:'/static/images/log.png'},
          {title:'博客',url:'/blog',img:'/static/images/blog.png'},
-        // {title:'项目',url:'/Project',img:'/static/images/project.png'}    
+        {title:'项目',url:'/Project',img:'/static/images/project.png'}    
       ]
     };
   },

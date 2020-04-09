@@ -45,6 +45,12 @@ export default new Router({
                 name: '第一篇博客',
                 component: () =>
                     import ('@/components/index/myblog/blog_1')
+            },
+            {
+                path: '/project/step',
+                name: 'web项目上线步骤',
+                component: () =>
+                    import ('@/components/index/project/step')
             }
         ]
     }, {

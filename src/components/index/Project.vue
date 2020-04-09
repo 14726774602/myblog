@@ -1,12 +1,7 @@
 <template>
   <div class="project">
-    <div>
-      <p class="title">项目名称</p>
-      <p class="text"></p>
-    </div>
-    <div>
-      <p class="title">项目内容</p>
-      <p class="text"></p>
+    <div v-for="(item,i) of project_title" :key='i'>
+      <router-link class="title"  :to="item.http">{{item.title}}</router-link>
     </div>
   </div>
 </template>
@@ -16,6 +11,10 @@ export default {
   name: "home",
   data() {
     return {
+      project_title:[
+        {http:'/project/step',title:'1、web项目上线的基本步骤'},
+        {http:'',title:'2、web项目结构组成'}
+      ]
     };
   },
   props: {
@@ -40,13 +39,13 @@ export default {
 <style scoped>
 .project{
   background: #2e2e2e;
-  padding: 30px;
+  padding: 1.5rem;
   border-radius: 10px;
 }
 .project div{
-  margin-top: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #000;
+  margin-top: 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid #999;
   
 }
 .project div:first-child{
@@ -57,9 +56,5 @@ export default {
   line-height: 2;
   font-size: 1.2rem;
   letter-spacing: 1px;
-}
-.text{
-  color: #ccc;
-  margin-left: 20px;
 }
 </style>
