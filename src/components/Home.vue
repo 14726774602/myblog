@@ -26,8 +26,8 @@ export default {
   data() {
     return {
       header_content:[
-       {title:'竹轩',url:'/',img:'/static/images/lu.png'},
-       {title:'我的主页',url:'/Secret',img:'/static/images/index.png'}
+       {title:'竹轩',url:'/',img:'/static/images/lu.png'}
+      //  {title:'我的主页',url:'/Secret',img:'/static/images/index.png'}
       ],
       s1: {
         prev_url: "/static/images/prev.png",
@@ -47,7 +47,7 @@ export default {
         {title:'首页',url:'/',img:'/static/images/index.png'},
         {title:'日志',url:'/Log',img:'/static/images/log.png'},
          {title:'博客',url:'/blog',img:'/static/images/blog.png'},
-        {title:'留言板',url:'/Message',img:'/static/images/message.png'}    
+        // {title:'项目',url:'/Project',img:'/static/images/project.png'}    
       ]
     };
   },

@@ -35,10 +35,10 @@ export default new Router({
                 component: () =>
                     import ('@/components/index/blog')
             }, {
-                path: '/Message',
-                name: 'Message',
+                path: '/Project',
+                name: 'Project',
                 component: () =>
-                    import ('@/components/index/Message')
+                    import ('@/components/index/Project')
             },
             {
                 path: '/blog/blog_1',

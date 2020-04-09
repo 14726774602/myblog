@@ -6,6 +6,7 @@ var condition_title = '';
 var arrTitle = [];
 //保存满足条件的数据
 var meetData = [];
+
 $(document).ready(function() {
     var wb;
     var rABS = false;
@@ -18,48 +19,94 @@ $(document).ready(function() {
         o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
         return o;
     }
+    //时间转化
+
+    function add0(m) { return m < 10 ? '0' + m : m }
+
+    function formatDate(numb, format) {
+        if (numb > 43890.5) {
+            numb -= 1
+        }
+        let time = new Date((numb - 1) * 24 * 3600000 + 1)
+            //console.log(time)
+        time.setYear(time.getFullYear() - 70)
+            //console.log(time)
+        var y = time.getFullYear() + ''
+        var m = time.getMonth() + 1 + ''
+        var d = time.getDate() + ''
+        var h = time.getHours() - 8 + ''
+        var mm = time.getMinutes() + '';
+        //var s = time.getSeconds();
+        if (numb == 43890.5) {
+            m = '2';
+            d = '29';
+        }
+        if (format && format.length === 1) {
+            return y + '-' + m + '-' + d + ' ' + add0(h) + ':' + add0(mm);
+        }
+        return year + (month < 10 ? '0' + month : month) + (date < 10 ? '0' + date : date)
+    }
 
     $("#file").change(function() {
         if (!this.files) {
             return;
         }
-        var f = this.files[0];
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var data = e.target.result;
+        com = this.files;
+        //console.log(com.length)
+        for (let f = 0; f < com.length; f++) {
+            var reader = new FileReader();
             if (rABS) {
-                wb = XLSX.read(btoa(fixdata(data)), {
-                    type: 'base64'
-                });
+                reader.readAsArrayBuffer(com[f]);
             } else {
-                wb = XLSX.read(data, {
-                    type: 'binary'
-                });
+                reader.readAsBinaryString(com[f]);
             }
-            let smData = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-            carData = carData.concat(smData);
-            //console.log(carData)
-            var html = ''
-            for (let key in smData[0]) {
-                html += "<label for='" + key + "'><input id='" + key + "' type='radio' name='row' value='" + key + "' />" + key + "</label>"
+            reader.onload = function(e) {
+                var data = e.target.result;
+                if (rABS) {
+                    wb = XLSX.read(btoa(fixdata(data)), {
+                        type: 'base64'
+                    });
+                } else {
+                    wb = XLSX.read(data, {
+                        type: 'binary'
+                    });
+                }
+                let smData = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+                // console.log(smData)
+                var html = ''
+                let smTitle = []
+                for (let key in smData[0]) {
+                    html += "<label for='" + key + "'><input class='radio' id='" + key + "' type='radio' name='row' value='" + key + "' />" + key + "</label>"
+                    smTitle.push(key)
+                }
+                for (let key in smData) {
+                    for (let item in smTitle) {
+                        if (!smData[key].hasOwnProperty(smTitle[item])) {
+                            smData[key][smTitle[item]] = ''
+                        }
+                    }
+                    if (smData[key].hasOwnProperty('新增日期')) {
+                        //console.log(smData[key]['新增日期'])
+                        if (typeof(smData[key]['新增日期']) == 'number') {
+                            smData[key]['新增日期'] = formatDate(smData[key]['新增日期'], '/');
+                        }
 
-            }
-            html += '<button onclick="leadRow()">确定</button>'
-            $('.screen-title').html(html)
-            alert('导入成功')
-        };
-        if (rABS) {
-            reader.readAsArrayBuffer(f);
-        } else {
-            reader.readAsBinaryString(f);
+                    }
+                }
+                arrTitle = smTitle
+                carData = carData.concat(smData);
+                html += '<button onclick="leadRow()">确定</button>'
+                $('.screen-title').html(html)
+                alert('导入成功')
+            };
         }
     })
-
 });
 
 
 function leadRow() {
     condition_title = $("input[name='row']:checked").val();
+    $('.condition-data').val('')
     if (!condition_title) {
         $('.screen-content').css('display', 'none')
         alert('请选择查询种类')
@@ -69,7 +116,10 @@ function leadRow() {
 }
 
 //获取筛选条件的数据
-function gainData() {
+var html = ''
+
+//获取条件  并查询满足条件的内容保存到 meetData 中
+function gainCon() {
     var txt = $('.condition-data').val()
     if (!txt) {
         alert('请输入查询条件')
@@ -80,39 +130,42 @@ function gainData() {
         } else {
             console.log(txt[txt.length - 1])
         }
+
         for (let n = 0; n < txt.length; n++) {
+            let reg = txt[n];
             carData.filter((item, i) => {
-                if (item[condition_title] == txt[n]) {
+                if (item[condition_title].toString().indexOf(reg) != -1) {
                     meetData.push(item)
-                    return;
                 }
             })
         }
-        if (meetData.length != 0) {
-            $('.export').css('display', 'block')
-            var html = ''
-            html += '<tr class="table-title">'
-            for (let key in meetData[0]) {
-                html += '<td>' + key + '</td>'
-                arrTitle.push(key)
+    }
+}
+
+function gainData() {
+    meetData = []; //清空上次查询的结果
+    gainCon()
+    var html = ''
+    if (meetData.length != 0) {
+        $('.export').css('display', 'block')
+        html += '<tr class="table-title">'
+        for (let key in arrTitle) {
+            html += '<td>' + arrTitle[key] + '</td>'
+        }
+        html += '</tr>';
+        for (let key in meetData) {
+            html += '</tr>'
+            let str = meetData[key]
+            for (let item in arrTitle) {
+                html += '<td>' + str[arrTitle[item]] + '</td>'
             }
             html += '</tr>'
-            console.log(arrTitle)
-            for (let key in meetData) {
-                html += '</tr>'
-                let str = meetData[key]
-                for (let item in str) {
-                    html += '<td>' + str[item] + '</td>'
-                }
-                html += '</tr>'
-            }
-            $('.table').html(html)
-        } else {
-            alert('查询的内容为空');
-            $('.export').css('display', 'none')
         }
+    } else {
+        alert('查询的内容为空');
+        $('.export').css('display', 'none')
     }
-
+    $('.table').html(html)
 }
 
 
