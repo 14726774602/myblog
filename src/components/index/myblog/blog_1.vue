@@ -199,4 +199,7 @@ export default {
   color:#fff;
   line-height: 1.2;
 }
+.intro-content pre{
+  overflow: auto;
+}
 </style>
